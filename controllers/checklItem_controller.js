@@ -46,16 +46,16 @@ export const listItem = async (req) => {
 	return successResponse(dataList);
 };
 
-export const remove = async (req) => {
+export const removeItem = async (req) => {
 	const {
-		params: { id },
+		params: { idItem },
 		user,
 		originalUrl,
 	} = req;
 
 	await endpointService.removeDoc({
 		dbAccess,
-		id,
+		id: idItem,
 		user,
 		originalUrl,
 	});
