@@ -42,4 +42,4 @@ Contributors names and contact info:
 
 1. Taryana
 
-- [Linkedin](https://www.linkedin.com/in/taryana10/)
+- [Linkedin](https://www.linkedin.com/in/taryanalink/)
