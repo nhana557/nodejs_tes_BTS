@@ -35,7 +35,6 @@ export const addItem = async (req) => {
 	return successResponse({}, "success add data");
 };
 
-// filter by name and type
 export const listItem = async (req) => {
 	const dataList = await endpointService.listDoc({
 		dbAccess,
@@ -44,6 +43,62 @@ export const listItem = async (req) => {
 	});
 
 	return successResponse(dataList);
+};
+
+export const detailItem = async (req) => {
+	const {
+		params: { idItem },
+	} = req;
+	const dataList = await endpointService.detailDoc({
+		dbAccess,
+		id: idItem,
+		populate: "checkListId",
+		filters: {},
+		mapping,
+	});
+
+	return successResponse(dataList);
+};
+
+export const updateIsActive = async (req) => {
+	const {
+		params: { idItem },
+		user,
+		originalUrl,
+	} = req;
+
+	await endpointService.updateIsActiveDoc({
+		dbAccess,
+		id: idItem,
+		user,
+		originalUrl,
+	});
+
+	return successResponse({}, "data was updated");
+};
+
+export const updateItem = async (req) => {
+	const {
+		params: { idItem },
+		user,
+		originalUrl,
+		body,
+	} = req;
+
+	const validatedData = itemCheckValidator(body);
+
+	const newData = {
+		itemName: validatedData.getItemName(),
+	};
+	await endpointService.updateDoc({
+		dbAccess,
+		id: idItem,
+		newData,
+		user,
+		originalUrl,
+	});
+
+	return successResponse({}, "data was updated");
 };
 
 export const removeItem = async (req) => {

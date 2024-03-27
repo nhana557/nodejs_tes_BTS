@@ -19,8 +19,8 @@ const find = async (filters = {}) => {
 	return data;
 };
 
-const findById = async ({ id, filters }) => {
-	const data = await CheckItem.findOne({ _id: id, ...filters });
+const findById = async ({ id, filters = {}, populate }) => {
+	const data = await CheckItem.findOne({ _id: id, ...filters }).populate(populate);
 	if (!data) {
 		throw new ServerError("CheckItem tidak ditemukan", 400);
 	}

@@ -65,7 +65,7 @@ const detailDoc = async ({ dbAccess, id, filters, mapping, populate }) => {
  * @param {string} options.originalUrl - The original URL associated with the action.
  * @returns {Promise} Resolves after the document is updated.
  */
-const updateDoc = async ({ dbAccess, id, filters, newData, user = {}, originalUrl }) => {
+const updateDoc = async ({ dbAccess, id, filters = {}, newData, user = {}, originalUrl }) => {
 	const updatedBy = addTimestamps(user, originalUrl);
 	return await dbAccess.update({ id, filters, newData, updatedBy });
 };
@@ -81,7 +81,7 @@ const updateDoc = async ({ dbAccess, id, filters, newData, user = {}, originalUr
  * @param {string} options.originalUrl - The original URL associated with the action.
  * @returns {Promise} Resolves after the 'isActive' field of the document is updated.
  */
-const updateIsActiveDoc = async ({ dbAccess, id, filters, user = {}, originalUrl }) => {
+const updateIsActiveDoc = async ({ dbAccess, id, filters = {}, user = {}, originalUrl }) => {
 	const updatedBy = addTimestamps(user, originalUrl);
 	return await dbAccess.updateIsActive({ id, filters, updatedBy });
 };
