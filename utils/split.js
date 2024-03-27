@@ -1,4 +1,4 @@
-import { ServerError } from './ApiError.js';
+import { ServerError } from "./ApiError.js";
 
 /**
  * Splits the URL parameters using a regular expression and returns an array of segments.
@@ -14,19 +14,19 @@ import { ServerError } from './ApiError.js';
  * // segments will be ["resource", "item", "123"]
  */
 const splitUrl = (urlParams) => {
-  const match = urlParams.match(/api\/v\d+\/([^?]+)/i);
+	const match = urlParams.match(/api\/([^?]+)/i);
 
-  if (!match) {
-    throw new ServerError('Unexpected URL structure.');
-  }
+	if (!match) {
+		throw new ServerError("Unexpected URL structure.");
+	}
 
-  const segments = match[1].split('/');
+	const segments = match[1].split("/");
 
-  if (segments.length === 0) {
-    throw new ServerError('Unexpected URL structure.');
-  }
+	if (segments.length === 0) {
+		throw new ServerError("Unexpected URL structure.");
+	}
 
-  return segments;
+	return segments;
 };
 
 export default splitUrl;

@@ -36,9 +36,13 @@ export const addItem = async (req) => {
 };
 
 export const listItem = async (req) => {
+	const {
+		params: { id },
+	} = req;
+
 	const dataList = await endpointService.listDoc({
 		dbAccess,
-		filters: {},
+		filters: { checkListId: id },
 		mapping,
 	});
 
@@ -47,13 +51,13 @@ export const listItem = async (req) => {
 
 export const detailItem = async (req) => {
 	const {
-		params: { idItem },
+		params: { idItem, id },
 	} = req;
 	const dataList = await endpointService.detailDoc({
 		dbAccess,
 		id: idItem,
 		populate: "checkListId",
-		filters: {},
+		filters: { checkListId: id },
 		mapping,
 	});
 

@@ -32,8 +32,8 @@ const insertDoc = async ({ dbAccess, newData, user = {}, originalUrl }) => {
 	return await dbAccess.insert(dataToInsert);
 };
 
-const listDoc = async ({ dbAccess, mapping }) => {
-	const data = await dbAccess.find();
+const listDoc = async ({ dbAccess, filters = {}, mapping }) => {
+	const data = await dbAccess.find(filters);
 	return data.map((value) => mapping(value));
 };
 

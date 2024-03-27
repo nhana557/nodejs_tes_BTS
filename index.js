@@ -9,7 +9,7 @@ const app = express();
 initDb();
 app.use(express.json());
 
-app.use("/api/v1/", router);
+app.use("/api/", router);
 
 app.use(errorMiddleware.notFound);
 app.use(errorMiddleware.errorHandler);
