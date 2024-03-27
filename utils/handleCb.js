@@ -33,7 +33,6 @@ export default function makeCallback(controller) {
 			res.type("json");
 			return res.status(httpResponse.statusCode).send(httpResponse.body);
 		} catch (err) {
-			console.log(err);
 			return res
 				.status(err.statusCode ? err.statusCode : err.message === "jwt expired" ? 401 : 500)
 				.send({

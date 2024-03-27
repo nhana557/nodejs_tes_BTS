@@ -36,7 +36,6 @@ export const list = async (req) => {
 		filters: {},
 		mapping,
 	});
-	console.log(dataList);
 
 	return successResponse(dataList);
 };

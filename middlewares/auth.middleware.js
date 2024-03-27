@@ -28,7 +28,6 @@ export const protect = async (req, res, next) => {
 			secret: JWT_TOKEN_SECRET,
 		});
 
-		console.log(decoded);
 		if (!decoded) throw new ServerError("Unauthorized, Session Anda telah berakhir", 401);
 
 		const user = await userAccess.findById({ id: decoded.userId });
@@ -39,7 +38,6 @@ export const protect = async (req, res, next) => {
 
 		next();
 	} catch (err) {
-		console.log(err);
 		return res
 			.status(
 				err.statusCode || err.message === "jwt expired"

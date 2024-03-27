@@ -22,15 +22,6 @@ const ItemCheckSchema = new mongoose.Schema({
 		unixDate: Number,
 		description: String,
 	},
-	updatedBy: [
-		{
-			userId: mongoose.Schema.Types.ObjectId,
-			name: String,
-			date: Date,
-			unixDate: Number,
-			description: String,
-		},
-	],
 	isDeleted: {
 		type: Boolean,
 		default: false,

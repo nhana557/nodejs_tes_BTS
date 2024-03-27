@@ -82,8 +82,6 @@ const update = async ({ id, filters, newData, updatedBy }) => {
 const updateIsActive = async ({ id, filters, updatedBy }) => {
 	const data = await findById({ id, filters });
 
-	data.updatedBy.push(updatedBy);
-
 	data.isActive = !data.isActive;
 	await data.save();
 	return data;
